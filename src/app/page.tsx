@@ -206,9 +206,6 @@ export default function Home() {
 
         {/* EXPERIENCE TIMELINE */}
         <section id="experience" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Track Record
-          </div>
           <h2 className="text-2xl font-bold mb-10 tracking-tight">Timeline</h2>
 
           <div className="relative pl-6 sm:pl-8 border-l border-[#CBD5E1] dark:border-[#1E2633] space-y-8 my-4">
@@ -259,9 +256,6 @@ export default function Home() {
 
                 {/* ACHIEVEMENTS / HONORS */}
         <section className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Milestones &amp; Honors
-          </div>
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Key Recognition</h2>
           <div className="grid gap-4 sm:grid-cols-2">
             {achievements.map((item, i) => (
@@ -276,18 +270,12 @@ export default function Home() {
 
         {/* GITHUB ACTIVITY HUD */}
         <section id="activity" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Telemetry &amp; Commits
-          </div>
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Contributions, combined</h2>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Contributions</h2>
           <Heatmap />
         </section>
 
         {/* PROJECTS */}
         <section id="projects" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Engineered Artefacts
-          </div>
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Featured Projects</h2>
           <div className="grid gap-5 sm:grid-cols-2">
             {projects.map((proj) => {
@@ -336,10 +324,7 @@ export default function Home() {
 
         {/* SKILLS CHIPS */}
         <section id="skills" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Capability Matrix
-          </div>
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Toolbox</h2>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Capability Matrix</h2>
           <div className="space-y-6">
             <div>
               <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">AI / LLM &amp; Agents</div>
@@ -371,9 +356,6 @@ export default function Home() {
         {/* INTERACTIVE TERMINAL HUD */}
         <section id="about" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
           <div className="flex items-center justify-between mb-4">
-            <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] uppercase tracking-wider font-semibold">
-              // Runtime Console
-            </div>
             <div className="font-mono text-[11px] text-[#94A3B8] dark:text-[#556477]">bash --interactive</div>
           </div>
 

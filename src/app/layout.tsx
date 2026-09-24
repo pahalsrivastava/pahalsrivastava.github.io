@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import {CustomCursor} from "@/components/CustomCursor";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -47,10 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark scroll-smooth">
-      <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased selection:bg-[#8B7CF6] selection:text-white`}>
+       <CustomCursor />
+       {children}
       </body>
     </html>
   );

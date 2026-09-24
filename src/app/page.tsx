@@ -1,8 +1,16 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { ArrowUpRight, Terminal as TerminalIcon, Sparkles, Code2, Cpu, Globe } from "lucide-react";
+import { 
+  ArrowUpRight, 
+  Terminal as TerminalIcon, 
+  Sparkles, 
+  Code2, 
+  Globe, 
+  Trophy, 
+  Award 
+} from "lucide-react";
 import { Heatmap } from "@/components/Heatmap";
 
 const experiences = [
@@ -57,18 +65,34 @@ const projects = [
 
 const achievements = [
   {
+    badge: "National Winner",
     title: "Winner · Smart India Hackathon 2024",
+    stat: "+35%",
+    statLabel: "Accuracy Boost",
     desc: "Engineered a high-concurrency SCADA discovery tool with Prometheus & Grafana, boosting accuracy by 35%.",
+    tags: ["SCADA Discovery", "Prometheus", "Grafana", "High Concurrency"],
+    icon: Trophy,
+    accent: "from-[#F59E0B]/20 via-[#F59E0B]/5 to-transparent",
+    iconColor: "text-[#F59E0B]",
+    borderHover: "hover:border-[#F59E0B]/50",
   },
   {
+    badge: "Elite Cohort",
     title: "ACM Winter School 2025",
+    stat: "Top 90",
+    statLabel: "Nationwide Selection",
     desc: "Selected among the top 90 engineers nationwide for edge computing & distributed AI at IISc Bangalore.",
+    tags: ["IISc Bangalore", "Edge Computing", "Distributed AI"],
+    icon: Award,
+    accent: "from-[#8B7CF6]/20 via-[#8B7CF6]/5 to-transparent",
+    iconColor: "text-[#8B7CF6]",
+    borderHover: "hover:border-[#8B7CF6]/50",
   },
 ];
 
 export default function Home() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [mounted, setMounted] = useState(false);
+  const [, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<"whoami" | "interests" | "education">("whoami");
 
   // Mouse spotlight coordinates
@@ -91,13 +115,6 @@ export default function Home() {
       document.documentElement.classList.add("dark");
     }
   }, []);
-
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem("theme", next);
-    document.documentElement.classList.toggle("dark", next === "dark");
-  };
 
   return (
     <div
@@ -171,7 +188,7 @@ export default function Home() {
           </p>
 
           <p className="text-[#475569] dark:text-[#94A3B8] max-w-2xl text-base leading-relaxed mb-9">
-            Obsessed with the mechanics between mathematical neural architectures and resilient microservices. I spend my time crafting low-latency pipelines, tuning agents, and shipping production software.
+            Learning and Building tech helping the industry since 2025.
           </p>
 
           <div className="flex flex-wrap items-center gap-3.5 font-mono text-xs">
@@ -194,18 +211,22 @@ export default function Home() {
             </a>
 
             <a
-              href="/resume.pdf"
+              href="https://in.linkedin.com/in/pahal-srivastava-8025582a3"
               target="_blank"
               rel="noreferrer"
               className="border border-[#CBD5E1] dark:border-[#232B36] bg-white/50 dark:bg-[#11161D]/60 px-5 py-2.5 rounded-lg text-[#64748B] dark:text-[#8C97A5] hover:border-[#0D9488] dark:hover:border-[#5FE3C0] hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-all backdrop-blur-sm"
             >
-              Resume ↗
+              <span>LinkedIn</span>
+              <ArrowUpRight size={14} />
             </a>
           </div>
         </motion.section>
 
         {/* EXPERIENCE TIMELINE */}
         <section id="experience" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Track Record
+          </div>
           <h2 className="text-2xl font-bold mb-10 tracking-tight">Timeline</h2>
 
           <div className="relative pl-6 sm:pl-8 border-l border-[#CBD5E1] dark:border-[#1E2633] space-y-8 my-4">
@@ -254,28 +275,103 @@ export default function Home() {
           </div>
         </section>
 
-                {/* ACHIEVEMENTS / HONORS */}
+        {/* ACHIEVEMENTS / HONORS */}
         <section className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="flex items-center justify-between mb-2">
+            <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] uppercase tracking-wider font-semibold">
+              // Milestones &amp; Honors
+            </div>
+            <span className="font-mono text-[11px] text-[#64748B] dark:text-[#8C97A5]">
+              Validated Competencies
+            </span>
+          </div>
+
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Key Recognition</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {achievements.map((item, i) => (
-              <div key={i} className="p-5 rounded-xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] shadow-xs">
-                <div className="font-mono text-xs text-[#7C3AED] dark:text-[#8B7CF6] mb-1 font-semibold">0{i + 1} // ACHIEVEMENT</div>
-                <h3 className="font-bold text-sm text-[#0F172A] dark:text-white mb-1.5">{item.title}</h3>
-                <p className="text-xs text-[#64748B] dark:text-[#8C97A5] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            {achievements.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: i * 0.1 }}
+                  className={`group relative overflow-hidden rounded-2xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.borderHover}`}
+                >
+                  {/* Subtle Ambient Radial Glow */}
+                  <div
+                    className={`pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${item.accent} blur-2xl transition-opacity duration-300 group-hover:opacity-100 opacity-60`}
+                  />
+
+                  <div className="relative z-10 flex flex-col justify-between h-full">
+                    <div>
+                      {/* Top Header: Badge, Icon & Hero Stat */}
+                      <div className="flex items-start justify-between gap-3 mb-5">
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#E2E8F0] dark:border-[#232B36] bg-[#F8FAFC] dark:bg-[#141A23] shadow-xs transition-transform duration-300 group-hover:scale-105">
+                            <Icon size={20} className={item.iconColor} />
+                          </div>
+                          <div>
+                            <span className="inline-block font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#EDE9FE] dark:bg-[#1E2633] text-[#7C3AED] dark:text-[#5FE3C0]">
+                              {item.badge}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Quantitative Metric */}
+                        <div className="text-right font-mono">
+                          <div className="text-base font-extrabold text-[#0F172A] dark:text-white leading-tight">
+                            {item.stat}
+                          </div>
+                          <div className="text-[10px] text-[#64748B] dark:text-[#8C97A5] uppercase tracking-wider">
+                            {item.statLabel}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Title & Description */}
+                      <h3 className="text-base font-bold text-[#0F172A] dark:text-white mb-2 group-hover:text-[#7C3AED] dark:group-hover:text-[#5FE3C0] transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-[#64748B] dark:text-[#8C97A5] leading-relaxed mb-6">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Bottom Tags */}
+                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#F1F5F9] dark:border-[#1E2633]">
+                      {item.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="font-mono text-[10px] text-[#475569] dark:text-[#94A3B8] bg-[#F8FAFC] dark:bg-[#161C25] px-2 py-0.5 rounded-md border border-[#E2E8F0] dark:border-[#232B36]"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </section>
 
         {/* GITHUB ACTIVITY HUD */}
         <section id="activity" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Telemetry &amp; Commits
+          </div>
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Contributions</h2>
           <Heatmap />
         </section>
 
         {/* PROJECTS */}
         <section id="projects" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Engineered Artefacts
+          </div>
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Featured Projects</h2>
           <div className="grid gap-5 sm:grid-cols-2">
             {projects.map((proj) => {
@@ -324,6 +420,9 @@ export default function Home() {
 
         {/* SKILLS CHIPS */}
         <section id="skills" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Capability Matrix
+          </div>
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Capability Matrix</h2>
           <div className="space-y-6">
             <div>
@@ -356,6 +455,9 @@ export default function Home() {
         {/* INTERACTIVE TERMINAL HUD */}
         <section id="about" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
           <div className="flex items-center justify-between mb-4">
+            <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] uppercase tracking-wider font-semibold">
+              // Runtime Console
+            </div>
             <div className="font-mono text-[11px] text-[#94A3B8] dark:text-[#556477]">bash --interactive</div>
           </div>
 

@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { 
-  ArrowUpRight, 
-  Terminal as TerminalIcon, 
-  Sparkles, 
-  Code2, 
-  Globe, 
-  Trophy, 
-  Award 
+import {
+  ArrowUpRight,
+  Terminal as TerminalIcon,
+  Sparkles,
+  Code2,
+  Globe,
+  Trophy,
+  Award,
+  BookOpen,
+  Activity,
 } from "lucide-react";
 import { Heatmap } from "@/components/Heatmap";
 
@@ -52,6 +54,7 @@ const projects = [
     tags: ["React.js", "Gemini API", "Vercel", "Tailwind CSS"],
     metrics: "3x faster iteration cycles",
     icon: Code2,
+    link: "https://github.com/pahalsrivastava",
   },
   {
     title: "TravelMate",
@@ -60,6 +63,29 @@ const projects = [
     tags: ["TypeScript", "Flask", "PostgreSQL", "Tailwind CSS"],
     metrics: "25% response time cut",
     icon: Globe,
+    link: "https://github.com/pahalsrivastava",
+  },
+  {
+    title: "SmartLife",
+    tagline: "Real-Time Habit & Financial Telemetry",
+    desc: "Data-driven habit and expense management engine featuring live GraphQL subscriptions, Clerk authentication, and instant PostgreSQL APIs via Hasura.",
+    tags: ["TypeScript", "React", "Hasura GraphQL", "PostgreSQL", "Docker", "Apollo Client"],
+    metrics: "Live Subscriptions",
+    icon: Activity,
+    link: "https://smart-life.vercel.app",
+    repo: "https://github.com/pahalsrivastava/SmartLife",
+  },
+];
+
+const publications = [
+  {
+    title: "Scientific Contributions & Research Publications",
+    venue: "ResearchGate · Distributed Systems & Intelligent Computing",
+    authors: "Pahal Srivastava",
+    desc: "Authored and contributed peer-reviewed research exploring machine learning, edge systems, and computational algorithms.",
+    link: "https://www.researchgate.net/scientific-contributions/Pahal-Srivastava-2350939039",
+    tags: ["Machine Learning", "Edge Computing", "Distributed Intelligence", "ResearchGate"],
+    badge: "Published Author",
   },
 ];
 
@@ -91,7 +117,7 @@ const achievements = [
 ];
 
 export default function Home() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [, setTheme] = useState<"dark" | "light">("dark");
   const [, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<"whoami" | "interests" | "education">("whoami");
 
@@ -154,11 +180,12 @@ export default function Home() {
             </span>
           </div>
 
-          <div className="flex items-center gap-6 text-xs text-[#64748B] dark:text-[#8C97A5] font-mono">
+          <div className="flex items-center gap-5 text-xs text-[#64748B] dark:text-[#8C97A5] font-mono">
             <a href="#about" className="hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-colors">/about</a>
             <a href="#experience" className="hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-colors">/experience</a>
             <a href="#activity" className="hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-colors">/activity</a>
             <a href="#projects" className="hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-colors">/projects</a>
+            <a href="#research" className="hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-colors">/research</a>
           </div>
         </div>
       </nav>
@@ -176,20 +203,22 @@ export default function Home() {
             <span>Bengaluru, India · Open to High-Impact Problems</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-[1.12]">
-            Exploring how deep models think and{" "}
+          <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 leading-[1.12]">
+            <span className="text-[#0D9488] dark:text-[#5FE3C0] font-mono text-3xl sm:text-5xl mr-2">
+              &gt;
+            </span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#8B7CF6] to-[#0D9488] dark:to-[#5FE3C0]">
-              building the distributed systems that power them.
+              PAHAL SRIVASTAVA
             </span>
           </h1>
 
-          <p className="font-mono text-sm tracking-wide text-[#6D28D9] dark:text-[#8B7CF6] mb-6">
-            &gt; Software Engineer · Systems &amp; Multimodal AI
+          <p className="font-mono text-sm tracking-wide text-[#6D28D9] dark:text-[#8B7CF6] mb-4">
+            Software Engineer · Systems &amp; Multimodal AI
           </p>
 
-          <p className="text-[#475569] dark:text-[#94A3B8] max-w-2xl text-base leading-relaxed mb-9">
-            Learning and Building tech helping the industry since 2025.
-          </p>
+          <h2 className="text-xl sm:text-2xl font-medium text-[#475569] dark:text-[#CBD5E1] max-w-2xl leading-relaxed mb-6">
+            Exploring how deep models think and building the distributed systems that power them.
+          </h2>
 
           <div className="flex flex-wrap items-center gap-3.5 font-mono text-xs">
             <a
@@ -207,26 +236,32 @@ export default function Home() {
               className="flex items-center gap-2 border border-[#CBD5E1] dark:border-[#232B36] bg-white/50 dark:bg-[#11161D]/60 px-5 py-2.5 rounded-lg text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] dark:hover:bg-[#161C25] transition-all backdrop-blur-sm"
             >
               <span>GitHub</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={14} className="shrink-0" />
             </a>
 
             <a
               href="https://in.linkedin.com/in/pahal-srivastava-8025582a3"
               target="_blank"
               rel="noreferrer"
-              className="border border-[#CBD5E1] dark:border-[#232B36] bg-white/50 dark:bg-[#11161D]/60 px-5 py-2.5 rounded-lg text-[#64748B] dark:text-[#8C97A5] hover:border-[#0D9488] dark:hover:border-[#5FE3C0] hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-all backdrop-blur-sm"
+              className="flex items-center gap-2 border border-[#CBD5E1] dark:border-[#232B36] bg-white/50 dark:bg-[#11161D]/60 px-5 py-2.5 rounded-lg text-[#64748B] dark:text-[#8C97A5] hover:border-[#0D9488] dark:hover:border-[#5FE3C0] hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-all backdrop-blur-sm whitespace-nowrap"
             >
               <span>LinkedIn</span>
-              <ArrowUpRight size={14} />
+              <ArrowUpRight size={14} className="shrink-0" />
+            </a>
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="border border-[#CBD5E1] dark:border-[#232B36] bg-white/50 dark:bg-[#11161D]/60 px-5 py-2.5 rounded-lg text-[#64748B] dark:text-[#8C97A5] hover:border-[#0D9488] dark:hover:border-[#5FE3C0] hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-all backdrop-blur-sm"
+            >
+              Resume ↗
             </a>
           </div>
         </motion.section>
 
         {/* EXPERIENCE TIMELINE */}
         <section id="experience" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Track Record
-          </div>
           <h2 className="text-2xl font-bold mb-10 tracking-tight">Timeline</h2>
 
           <div className="relative pl-6 sm:pl-8 border-l border-[#CBD5E1] dark:border-[#1E2633] space-y-8 my-4">
@@ -278,9 +313,6 @@ export default function Home() {
         {/* ACHIEVEMENTS / HONORS */}
         <section className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
           <div className="flex items-center justify-between mb-2">
-            <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] uppercase tracking-wider font-semibold">
-              // Milestones &amp; Honors
-            </div>
             <span className="font-mono text-[11px] text-[#64748B] dark:text-[#8C97A5]">
               Validated Competencies
             </span>
@@ -300,14 +332,12 @@ export default function Home() {
                   transition={{ duration: 0.35, delay: i * 0.1 }}
                   className={`group relative overflow-hidden rounded-2xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${item.borderHover}`}
                 >
-                  {/* Subtle Ambient Radial Glow */}
                   <div
                     className={`pointer-events-none absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${item.accent} blur-2xl transition-opacity duration-300 group-hover:opacity-100 opacity-60`}
                   />
 
                   <div className="relative z-10 flex flex-col justify-between h-full">
                     <div>
-                      {/* Top Header: Badge, Icon & Hero Stat */}
                       <div className="flex items-start justify-between gap-3 mb-5">
                         <div className="flex items-center gap-3">
                           <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#E2E8F0] dark:border-[#232B36] bg-[#F8FAFC] dark:bg-[#141A23] shadow-xs transition-transform duration-300 group-hover:scale-105">
@@ -320,7 +350,6 @@ export default function Home() {
                           </div>
                         </div>
 
-                        {/* Quantitative Metric */}
                         <div className="text-right font-mono">
                           <div className="text-base font-extrabold text-[#0F172A] dark:text-white leading-tight">
                             {item.stat}
@@ -331,7 +360,6 @@ export default function Home() {
                         </div>
                       </div>
 
-                      {/* Title & Description */}
                       <h3 className="text-base font-bold text-[#0F172A] dark:text-white mb-2 group-hover:text-[#7C3AED] dark:group-hover:text-[#5FE3C0] transition-colors">
                         {item.title}
                       </h3>
@@ -340,7 +368,6 @@ export default function Home() {
                       </p>
                     </div>
 
-                    {/* Bottom Tags */}
                     <div className="flex flex-wrap gap-1.5 pt-3 border-t border-[#F1F5F9] dark:border-[#1E2633]">
                       {item.tags.map((t) => (
                         <span
@@ -360,20 +387,14 @@ export default function Home() {
 
         {/* GITHUB ACTIVITY HUD */}
         <section id="activity" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Telemetry &amp; Commits
-          </div>
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Contributions</h2>
           <Heatmap />
         </section>
 
         {/* PROJECTS */}
         <section id="projects" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Engineered Artefacts
-          </div>
           <h2 className="text-2xl font-bold mb-8 tracking-tight">Featured Projects</h2>
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((proj) => {
               const Icon = proj.icon;
               return (
@@ -391,8 +412,18 @@ export default function Home() {
                       </span>
                     </div>
 
-                    <h3 className="font-bold text-[#0F172A] dark:text-white text-lg group-hover:text-[#7C3AED] dark:group-hover:text-[#8B7CF6] transition-colors">
-                      {proj.title}
+                    <h3 className="font-bold text-[#0F172A] dark:text-white text-lg group-hover:text-[#7C3AED] dark:group-hover:text-[#8B7CF6] transition-colors flex items-center gap-1.5">
+                      <span>{proj.title}</span>
+                      {proj.link && (
+                        <a
+                          href={proj.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="opacity-0 group-hover:opacity-100 transition-opacity text-[#64748B] hover:text-[#0D9488] dark:hover:text-[#5FE3C0]"
+                        >
+                          <ArrowUpRight size={14} />
+                        </a>
+                      )}
                     </h3>
                     <div className="font-mono text-[11px] text-[#6D28D9] dark:text-[#8B7CF6] mb-2.5">
                       {proj.tagline}
@@ -418,17 +449,85 @@ export default function Home() {
           </div>
         </section>
 
+        {/* RESEARCH & SCIENTIFIC CONTRIBUTIONS */}
+        <section id="research" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="flex items-center justify-between mb-2">
+            <span className="font-mono text-[11px] text-[#64748B] dark:text-[#8C97A5]">
+              Scientific Record
+            </span>
+          </div>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Publications</h2>
+
+          <div className="space-y-4">
+            {publications.map((pub, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35 }}
+                className="group relative overflow-hidden rounded-2xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] p-6 transition-all duration-300 hover:border-[#8B7CF6]/60 hover:shadow-xl"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                  <div className="flex items-start gap-3.5">
+                    <div className="p-2.5 rounded-xl border border-[#E2E8F0] dark:border-[#232B36] bg-[#F8FAFC] dark:bg-[#141A23] text-[#7C3AED] dark:text-[#5FE3C0] shrink-0">
+                      <BookOpen size={20} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-[#CCFBF1] dark:bg-[#5FE3C0]/10 text-[#0D9488] dark:text-[#5FE3C0]">
+                          {pub.badge}
+                        </span>
+                        <span className="text-xs text-[#64748B] dark:text-[#8C97A5] font-mono">
+                          {pub.venue}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-[#0F172A] dark:text-white text-base group-hover:text-[#7C3AED] dark:group-hover:text-[#5FE3C0] transition-colors">
+                        {pub.title}
+                      </h3>
+                      <div className="font-mono text-xs text-[#6D28D9] dark:text-[#8B7CF6] mt-0.5 mb-2">
+                        Author: {pub.authors}
+                      </div>
+                      <p className="text-xs text-[#64748B] dark:text-[#8C97A5] leading-relaxed max-w-2xl">
+                        {pub.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={pub.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 shrink-0 self-start sm:self-center font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] border border-[#CBD5E1] dark:border-[#232B36] bg-[#F8FAFC] dark:bg-[#141A23] px-3.5 py-2 rounded-lg hover:border-[#8B7CF6] transition-all"
+                  >
+                    <span>ResearchGate</span>
+                    <ArrowUpRight size={14} />
+                  </a>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5 pt-4 mt-4 border-t border-[#F1F5F9] dark:border-[#1E2633]">
+                  {pub.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="font-mono text-[10px] text-[#475569] dark:text-[#94A3B8] bg-[#F1F5F9] dark:bg-[#161C25] px-2 py-0.5 rounded-md"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
         {/* SKILLS CHIPS */}
         <section id="skills" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Capability Matrix
-          </div>
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Capability Matrix</h2>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Toolbox</h2>
           <div className="space-y-6">
             <div>
               <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">AI / LLM &amp; Agents</div>
               <div className="flex flex-wrap gap-2">
-                {["OpenAI", "Claude", "Llama", "Hugging Face", "LangChain", "TensorFlow", "RAG", "Prompt Engineering", "LLM Fine-Tuning", "AI Agents"].map(s => (
+                {["OpenAI", "Claude", "Llama", "Hugging Face", "LangChain", "TensorFlow", "RAG", "Prompt Engineering", "LLM Fine-Tuning", "AI Agents"].map((s) => (
                   <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
                 ))}
               </div>
@@ -436,7 +535,7 @@ export default function Home() {
             <div>
               <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">Languages &amp; Core Stack</div>
               <div className="flex flex-wrap gap-2">
-                {["Python", "TypeScript", "JavaScript", "C++", "React", "Node.js", "GraphQL", "Flask", "REST APIs"].map(s => (
+                {["Python", "TypeScript", "JavaScript", "C++", "React", "Node.js", "GraphQL", "Flask", "REST APIs"].map((s) => (
                   <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
                 ))}
               </div>
@@ -444,7 +543,7 @@ export default function Home() {
             <div>
               <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">Distributed Infra &amp; Tools</div>
               <div className="flex flex-wrap gap-2">
-                {["PostgreSQL", "MySQL", "Docker", "Apache Airflow", "CI/CD", "Sentry", "Jest", "Git"].map(s => (
+                {["PostgreSQL", "MySQL", "Docker", "Apache Airflow", "CI/CD", "Sentry", "Jest", "Git"].map((s) => (
                   <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
                 ))}
               </div>
@@ -525,7 +624,6 @@ export default function Home() {
 
         {/* FOOTER */}
         <footer id="contact" className="py-20 font-mono text-sm text-[#64748B] dark:text-[#8C97A5]">
-          <div className="text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">// Connection Protocol</div>
           <div className="text-[#0F172A] dark:text-white text-2xl font-bold mb-4">Let&apos;s build something great.</div>
           <div className="space-y-1">
             <div>

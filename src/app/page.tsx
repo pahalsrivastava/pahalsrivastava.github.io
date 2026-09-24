@@ -204,22 +204,20 @@ export default function Home() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 leading-[1.12]">
-            <span className="text-[#0D9488] dark:text-[#5FE3C0] font-mono text-3xl sm:text-5xl mr-2">
-              &gt;
-            </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#8B7CF6] to-[#0D9488] dark:to-[#5FE3C0]">
-              PAHAL SRIVASTAVA
-            </span>
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4 leading-[1.12]">
+              <span className="text-[#0F172A] dark:text-white">
+                PAHAL SRIVASTAVA
+              </span>
+            </h1>
           </h1>
 
           <p className="font-mono text-sm tracking-wide text-[#6D28D9] dark:text-[#8B7CF6] mb-4">
             Software Engineer · Systems &amp; Multimodal AI
           </p>
 
-          <h2 className="text-xl sm:text-2xl font-medium text-[#475569] dark:text-[#CBD5E1] max-w-2xl leading-relaxed mb-6">
-            Exploring how deep models think and building the distributed systems that power them.
+          <h2 className="text-sm sm:text-base font-normal text-[#475569] dark:text-[#94A3B8] max-w-3xl leading-relaxed mb-6">
+            Exploring how deep models think, designing autonomous agentic workflows, and engineering the resilient, low-latency microservices and event-driven backends that power them in production.
           </h2>
-
           <div className="flex flex-wrap items-center gap-3.5 font-mono text-xs">
             <a
               href="mailto:pahalsrivastava05@gmail.com"
@@ -248,15 +246,6 @@ export default function Home() {
               <span>LinkedIn</span>
               <ArrowUpRight size={14} className="shrink-0" />
             </a>
-
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-              className="border border-[#CBD5E1] dark:border-[#232B36] bg-white/50 dark:bg-[#11161D]/60 px-5 py-2.5 rounded-lg text-[#64748B] dark:text-[#8C97A5] hover:border-[#0D9488] dark:hover:border-[#5FE3C0] hover:text-[#0D9488] dark:hover:text-[#5FE3C0] transition-all backdrop-blur-sm"
-            >
-              Resume ↗
-            </a>
           </div>
         </motion.section>
 
@@ -276,11 +265,10 @@ export default function Home() {
               >
                 {/* Glowing Node */}
                 <span
-                  className={`absolute -left-[31px] sm:-left-[39px] top-2 h-3.5 w-3.5 rounded-full border-2 transition-all duration-300 ${
-                    exp.current
-                      ? "border-[#0D9488] dark:border-[#5FE3C0] bg-white dark:bg-[#07090E] shadow-[0_0_12px_#5FE3C0]"
-                      : "border-[#CBD5E1] dark:border-[#232B36] bg-white dark:bg-[#11161D] group-hover:border-[#7C3AED] dark:group-hover:border-[#8B7CF6]"
-                  }`}
+                  className={`absolute -left-[31px] sm:-left-[39px] top-2 h-3.5 w-3.5 rounded-full border-2 transition-all duration-300 ${exp.current
+                    ? "border-[#0D9488] dark:border-[#5FE3C0] bg-white dark:bg-[#07090E] shadow-[0_0_12px_#5FE3C0]"
+                    : "border-[#CBD5E1] dark:border-[#232B36] bg-white dark:bg-[#11161D] group-hover:border-[#7C3AED] dark:group-hover:border-[#8B7CF6]"
+                    }`}
                 />
 
                 {/* Glassmorphic Item Card */}
@@ -578,11 +566,10 @@ export default function Home() {
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`font-mono text-[11px] px-2.5 py-1 rounded transition-colors ${
-                      activeTab === tab
-                        ? "bg-white dark:bg-[#1D2430] text-[#7C3AED] dark:text-[#5FE3C0] font-bold shadow-xs"
-                        : "text-[#64748B] dark:text-[#8C97A5] hover:text-black dark:hover:text-white"
-                    }`}
+                    className={`font-mono text-[11px] px-2.5 py-1 rounded transition-colors ${activeTab === tab
+                      ? "bg-white dark:bg-[#1D2430] text-[#7C3AED] dark:text-[#5FE3C0] font-bold shadow-xs"
+                      : "text-[#64748B] dark:text-[#8C97A5] hover:text-black dark:hover:text-white"
+                      }`}
                   >
                     .{tab}()
                   </button>

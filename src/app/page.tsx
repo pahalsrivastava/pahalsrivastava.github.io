@@ -204,6 +204,170 @@ export default function Home() {
           </div>
         </motion.section>
 
+        {/* EXPERIENCE TIMELINE */}
+        <section id="experience" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Track Record
+          </div>
+          <h2 className="text-2xl font-bold mb-10 tracking-tight">Timeline</h2>
+
+          <div className="relative pl-6 sm:pl-8 border-l border-[#CBD5E1] dark:border-[#1E2633] space-y-8 my-4">
+            {experiences.map((exp, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -14 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: idx * 0.1 }}
+                className="relative group"
+              >
+                {/* Glowing Node */}
+                <span
+                  className={`absolute -left-[31px] sm:-left-[39px] top-2 h-3.5 w-3.5 rounded-full border-2 transition-all duration-300 ${
+                    exp.current
+                      ? "border-[#0D9488] dark:border-[#5FE3C0] bg-white dark:bg-[#07090E] shadow-[0_0_12px_#5FE3C0]"
+                      : "border-[#CBD5E1] dark:border-[#232B36] bg-white dark:bg-[#11161D] group-hover:border-[#7C3AED] dark:group-hover:border-[#8B7CF6]"
+                  }`}
+                />
+
+                {/* Glassmorphic Item Card */}
+                <div className="p-4 sm:p-5 rounded-xl border border-transparent group-hover:border-[#E2E8F0] dark:group-hover:border-[#232B36] group-hover:bg-white/80 dark:group-hover:bg-[#11161D]/70 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-xs group-hover:shadow-md">
+                  <div>
+                    <div className="flex items-center gap-3">
+                      <h3 className="font-semibold text-base text-[#0F172A] dark:text-white group-hover:text-[#0D9488] dark:group-hover:text-[#5FE3C0] transition-colors">
+                        {exp.role}
+                      </h3>
+                      {exp.current && (
+                        <span className="font-mono text-[10px] text-[#0D9488] dark:text-[#5FE3C0] bg-[#CCFBF1] dark:bg-[#5FE3C0]/10 px-2 py-0.5 rounded-full font-bold">
+                          ACTIVE
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-xs text-[#64748B] dark:text-[#8C97A5] font-mono mt-1">
+                      {exp.company} <span className="text-[#CBD5E1] dark:text-[#232B36] mx-1.5">•</span> <span>{exp.type}</span>
+                    </div>
+                  </div>
+
+                  <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] whitespace-nowrap bg-[#F1F5F9] dark:bg-[#161C25] px-2.5 py-1 rounded-md">
+                    {exp.period}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+                {/* ACHIEVEMENTS / HONORS */}
+        <section className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Milestones &amp; Honors
+          </div>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Key Recognition</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {achievements.map((item, i) => (
+              <div key={i} className="p-5 rounded-xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] shadow-xs">
+                <div className="font-mono text-xs text-[#7C3AED] dark:text-[#8B7CF6] mb-1 font-semibold">0{i + 1} // ACHIEVEMENT</div>
+                <h3 className="font-bold text-sm text-[#0F172A] dark:text-white mb-1.5">{item.title}</h3>
+                <p className="text-xs text-[#64748B] dark:text-[#8C97A5] leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* GITHUB ACTIVITY HUD */}
+        <section id="activity" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Telemetry &amp; Commits
+          </div>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Contributions, combined</h2>
+          <Heatmap />
+        </section>
+
+        {/* PROJECTS */}
+        <section id="projects" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Engineered Artefacts
+          </div>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Featured Projects</h2>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {projects.map((proj) => {
+              const Icon = proj.icon;
+              return (
+                <div
+                  key={proj.title}
+                  className="relative group p-6 rounded-2xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] hover:border-[#8B7CF6]/60 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="p-2 rounded-lg bg-[#EDE9FE] dark:bg-[#1A1F2C] text-[#7C3AED] dark:text-[#8B7CF6]">
+                        <Icon size={18} />
+                      </div>
+                      <span className="font-mono text-[10px] text-[#0D9488] dark:text-[#5FE3C0] bg-[#CCFBF1] dark:bg-[#5FE3C0]/10 px-2 py-0.5 rounded-full font-bold">
+                        {proj.metrics}
+                      </span>
+                    </div>
+
+                    <h3 className="font-bold text-[#0F172A] dark:text-white text-lg group-hover:text-[#7C3AED] dark:group-hover:text-[#8B7CF6] transition-colors">
+                      {proj.title}
+                    </h3>
+                    <div className="font-mono text-[11px] text-[#6D28D9] dark:text-[#8B7CF6] mb-2.5">
+                      {proj.tagline}
+                    </div>
+                    <p className="text-xs text-[#64748B] dark:text-[#8C97A5] leading-relaxed mb-5">
+                      {proj.desc}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#F1F5F9] dark:border-[#1E2633]">
+                    {proj.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="font-mono text-[10px] text-[#475569] dark:text-[#94A3B8] bg-[#F1F5F9] dark:bg-[#161C25] px-2 py-0.5 rounded-md"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* SKILLS CHIPS */}
+        <section id="skills" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
+          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
+            // Capability Matrix
+          </div>
+          <h2 className="text-2xl font-bold mb-8 tracking-tight">Toolbox</h2>
+          <div className="space-y-6">
+            <div>
+              <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">AI / LLM &amp; Agents</div>
+              <div className="flex flex-wrap gap-2">
+                {["OpenAI", "Claude", "Llama", "Hugging Face", "LangChain", "TensorFlow", "RAG", "Prompt Engineering", "LLM Fine-Tuning", "AI Agents"].map(s => (
+                  <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">Languages &amp; Core Stack</div>
+              <div className="flex flex-wrap gap-2">
+                {["Python", "TypeScript", "JavaScript", "C++", "React", "Node.js", "GraphQL", "Flask", "REST APIs"].map(s => (
+                  <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">Distributed Infra &amp; Tools</div>
+              <div className="flex flex-wrap gap-2">
+                {["PostgreSQL", "MySQL", "Docker", "Apache Airflow", "CI/CD", "Sentry", "Jest", "Git"].map(s => (
+                  <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* INTERACTIVE TERMINAL HUD */}
         <section id="about" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
           <div className="flex items-center justify-between mb-4">
@@ -271,170 +435,6 @@ export default function Home() {
                   </p>
                 </motion.div>
               )}
-            </div>
-          </div>
-        </section>
-
-        {/* EXPERIENCE TIMELINE */}
-        <section id="experience" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Track Record
-          </div>
-          <h2 className="text-2xl font-bold mb-10 tracking-tight">Timeline</h2>
-
-          <div className="relative pl-6 sm:pl-8 border-l border-[#CBD5E1] dark:border-[#1E2633] space-y-8 my-4">
-            {experiences.map((exp, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: -14 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: idx * 0.1 }}
-                className="relative group"
-              >
-                {/* Glowing Node */}
-                <span
-                  className={`absolute -left-[31px] sm:-left-[39px] top-2 h-3.5 w-3.5 rounded-full border-2 transition-all duration-300 ${
-                    exp.current
-                      ? "border-[#0D9488] dark:border-[#5FE3C0] bg-white dark:bg-[#07090E] shadow-[0_0_12px_#5FE3C0]"
-                      : "border-[#CBD5E1] dark:border-[#232B36] bg-white dark:bg-[#11161D] group-hover:border-[#7C3AED] dark:group-hover:border-[#8B7CF6]"
-                  }`}
-                />
-
-                {/* Glassmorphic Item Card */}
-                <div className="p-4 sm:p-5 rounded-xl border border-transparent group-hover:border-[#E2E8F0] dark:group-hover:border-[#232B36] group-hover:bg-white/80 dark:group-hover:bg-[#11161D]/70 transition-all duration-300 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-xs group-hover:shadow-md">
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <h3 className="font-semibold text-base text-[#0F172A] dark:text-white group-hover:text-[#0D9488] dark:group-hover:text-[#5FE3C0] transition-colors">
-                        {exp.role}
-                      </h3>
-                      {exp.current && (
-                        <span className="font-mono text-[10px] text-[#0D9488] dark:text-[#5FE3C0] bg-[#CCFBF1] dark:bg-[#5FE3C0]/10 px-2 py-0.5 rounded-full font-bold">
-                          ACTIVE
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-xs text-[#64748B] dark:text-[#8C97A5] font-mono mt-1">
-                      {exp.company} <span className="text-[#CBD5E1] dark:text-[#232B36] mx-1.5">•</span> <span>{exp.type}</span>
-                    </div>
-                  </div>
-
-                  <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] whitespace-nowrap bg-[#F1F5F9] dark:bg-[#161C25] px-2.5 py-1 rounded-md">
-                    {exp.period}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* GITHUB ACTIVITY HUD */}
-        <section id="activity" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Telemetry &amp; Commits
-          </div>
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Contributions, combined</h2>
-          <Heatmap />
-        </section>
-
-        {/* PROJECTS */}
-        <section id="projects" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Engineered Artefacts
-          </div>
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Featured Projects</h2>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {projects.map((proj) => {
-              const Icon = proj.icon;
-              return (
-                <div
-                  key={proj.title}
-                  className="relative group p-6 rounded-2xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] hover:border-[#8B7CF6]/60 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="p-2 rounded-lg bg-[#EDE9FE] dark:bg-[#1A1F2C] text-[#7C3AED] dark:text-[#8B7CF6]">
-                        <Icon size={18} />
-                      </div>
-                      <span className="font-mono text-[10px] text-[#0D9488] dark:text-[#5FE3C0] bg-[#CCFBF1] dark:bg-[#5FE3C0]/10 px-2 py-0.5 rounded-full font-bold">
-                        {proj.metrics}
-                      </span>
-                    </div>
-
-                    <h3 className="font-bold text-[#0F172A] dark:text-white text-lg group-hover:text-[#7C3AED] dark:group-hover:text-[#8B7CF6] transition-colors">
-                      {proj.title}
-                    </h3>
-                    <div className="font-mono text-[11px] text-[#6D28D9] dark:text-[#8B7CF6] mb-2.5">
-                      {proj.tagline}
-                    </div>
-                    <p className="text-xs text-[#64748B] dark:text-[#8C97A5] leading-relaxed mb-5">
-                      {proj.desc}
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#F1F5F9] dark:border-[#1E2633]">
-                    {proj.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="font-mono text-[10px] text-[#475569] dark:text-[#94A3B8] bg-[#F1F5F9] dark:bg-[#161C25] px-2 py-0.5 rounded-md"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ACHIEVEMENTS / HONORS */}
-        <section className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Milestones &amp; Honors
-          </div>
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Key Recognition</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {achievements.map((item, i) => (
-              <div key={i} className="p-5 rounded-xl border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] shadow-xs">
-                <div className="font-mono text-xs text-[#7C3AED] dark:text-[#8B7CF6] mb-1 font-semibold">0{i + 1} // ACHIEVEMENT</div>
-                <h3 className="font-bold text-sm text-[#0F172A] dark:text-white mb-1.5">{item.title}</h3>
-                <p className="text-xs text-[#64748B] dark:text-[#8C97A5] leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* SKILLS CHIPS */}
-        <section id="skills" className="py-16 border-b border-[#E2E8F0] dark:border-[#1E2633]">
-          <div className="font-mono text-xs text-[#0D9488] dark:text-[#5FE3C0] mb-2 uppercase tracking-wider font-semibold">
-            // Capability Matrix
-          </div>
-          <h2 className="text-2xl font-bold mb-8 tracking-tight">Toolbox</h2>
-          <div className="space-y-6">
-            <div>
-              <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">AI / LLM &amp; Agents</div>
-              <div className="flex flex-wrap gap-2">
-                {["OpenAI", "Claude", "Llama", "Hugging Face", "LangChain", "TensorFlow", "RAG", "Prompt Engineering", "LLM Fine-Tuning", "AI Agents"].map(s => (
-                  <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">Languages &amp; Core Stack</div>
-              <div className="flex flex-wrap gap-2">
-                {["Python", "TypeScript", "JavaScript", "C++", "React", "Node.js", "GraphQL", "Flask", "REST APIs"].map(s => (
-                  <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
-                ))}
-              </div>
-            </div>
-            <div>
-              <div className="font-mono text-xs text-[#64748B] dark:text-[#8C97A5] mb-2">Distributed Infra &amp; Tools</div>
-              <div className="flex flex-wrap gap-2">
-                {["PostgreSQL", "MySQL", "Docker", "Apache Airflow", "CI/CD", "Sentry", "Jest", "Git"].map(s => (
-                  <span key={s} className="border border-[#E2E8F0] dark:border-[#1E2633] bg-white dark:bg-[#0E131A] rounded-lg px-3 py-1.5 text-xs text-[#0F172A] dark:text-[#E7ECF1] hover:border-[#8B7CF6] transition-colors font-mono shadow-xs">{s}</span>
-                ))}
-              </div>
             </div>
           </div>
         </section>
